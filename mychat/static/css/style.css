@@ -138,7 +138,7 @@ img{
 .msg{
     width: 40px;
     height: 40px;
-    background-color: slateblue;
+    background-color: green;
     border-radius: 50%;
     text-align: center;
     color: white;
@@ -242,7 +242,7 @@ button{
     width: 200px;
     height: auto;
     font-size: 14px;
-    background-color: slateblue;
+    background-color: green;
     color: white;
     margin-left: auto;
     margin-bottom: 10px;

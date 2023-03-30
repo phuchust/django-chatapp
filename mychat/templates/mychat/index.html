@@ -29,7 +29,7 @@
         </div>
         <div class="name">
           <h5>{{friend.profile.name}}</h5>
-          <p>How are you doing today</p>
+          {% comment %} <p class="new_msg_tmp"></p> {% endcomment %}
         </div>
         <div class="time_new_msg">
           {% comment %} <p>7:30am</p> {% endcomment %}
@@ -109,7 +109,7 @@
   
   <script>
 
-      {% comment %} setInterval(getNotification, 1000)
+    setInterval(getNotification, 1000)
 
     function getNotification(){
       let url = "{% url 'notification' %}"
@@ -124,7 +124,7 @@
         }
       })
       .catch(error => console.log(error))
-    } {% endcomment %}
+    }
 
   </script>
   

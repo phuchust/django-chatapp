@@ -94,15 +94,10 @@
 
     </div>
 
-   
-
-
-
 </div>
 
 <script>
-
-    {% comment %} function getCookie(name) {
+    function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             const cookies = document.cookie.split(';');
@@ -132,102 +127,68 @@
         
         let url = "{% url 'sent_msg' friend.profile.id %}"
 
-fetch(url, {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-    'X-CSRFToken': csrftoken
-  },
-  body: JSON.stringify(data),
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-  let chat_body = document.getElementById('chat-body')
-  let chatMessageBox = document.createElement("div")
-  chatMessageBox.classList.add("chat-box-sent")
-  chatMessageBox.innerText = data
-  chat_body.append(chatMessageBox)
-  document.getElementById("id_body").value=""
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
-
-
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            let chat_body = document.getElementById('chat-body')
+            let chatMessageBox = document.createElement("div")
+            chatMessageBox.classList.add("chat-box-sent")
+            chatMessageBox.innerText = data
+            chat_body.append(chatMessageBox)
+            document.getElementById("id_body").value=""
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     }
 
+    setInterval(receiveMessages, 2000)
 
 
-
-
-
-
-
-
-    
-
-setInterval(receiveMessages, 2000)
-
-
-let counter = {{num}}
-function receiveMessages(){
-
-
-    let url = "{% url 'rec_msg' friend.profile.id %}"
+    let counter = {{num}}
+    function receiveMessages(){
+        let url = "{% url 'rec_msg' friend.profile.id %}"
 
         fetch(url)
         .then(response => response.json())
         .then(data => {
-        console.log('Success:', data);
-        
-        
+            console.log('Success:', data);
 
-        if(data.length == 0){}
+            if(data.length == 0){
 
-        else{
-
-            let lastMsg = data[data.length-1]
-
-            if(counter == data.length){
-                console.log("there is no new chat")
             }
-
-        
-        
-
             else{
 
+                let lastMsg = data[data.length-1]
 
-                let chat_body = document.getElementById('chat-body')
-                let chatMessageBox = document.createElement("div")
-                
-                chatMessageBox.classList.add("chat-box-received")
-                chatMessageBox.innerText = lastMsg
-                chat_body.append(chatMessageBox)
-                document.getElementById("id_body").value=""
-                console.log()
-
-                console.log
-
-
+                if(counter == data.length){
+                    console.log("there is no new chat")
+                }
+                else{
+                    let chat_body = document.getElementById('chat-body')
+                    let chatMessageBox = document.createElement("div")
+                    
+                    chatMessageBox.classList.add("chat-box-received")
+                    chatMessageBox.innerText = lastMsg
+                    chat_body.append(chatMessageBox)
+                    document.getElementById("id_body").value=""
+                }
             }
-
-        }
-        
-        counter = data.length
-
-
+            counter = data.length
 
         })
         .catch((error) => {
-        console.error('Error:', error);
+            console.error('Error:', error);
         });
-
-} {% endcomment %}
-
-
-
+    }
 </script>
 
 
