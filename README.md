@@ -7,3 +7,9 @@
 
 このアプリケーションのインデックスページにアクセスする前に、ユーザーがログインしている必要があります。
 そうでない場合、DjangoからAnonymousUserErrorが発生します。
+
+# スクリーンショット
+
+![メイン画面](screenshot/Screenshot_1.PNG)
+![チャット画面　ユーザー1](screenshot/Screenshot_2.PNG)
+![チャット画面　ユーザー2](screenshot/Screenshot_3.PNG)
